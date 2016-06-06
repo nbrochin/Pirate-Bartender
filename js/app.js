@@ -229,7 +229,6 @@ console.log(Sweet.ingredients);
     var score = $('<div>',{class: 'trivia-questions'});
     var calculatedScore = calculateScore();
     currentScore = calculateScore();
-    $('header ul li.total-score').text(currentScore[1]);
 
    
     var trueTxtcolr = "";
@@ -286,7 +285,6 @@ var Drinks = function(stuff) {
   var randDrink1 = partOne.stuff[Math.floor(Math.random() * partOne.stuff.length)];
   var randDrink2 = partTwo.stuff[Math.floor(Math.random() * partTwo.stuff.length)];
 
-console.log();
 
 
     	result += (i + 1 ) + '. ' + questionSet[i].question + '<br />' + '<em>Your Answer: </em>' + '<span style="color:' + trueTxtcolr + ';">' + questionSet[i].choices[selections[i]]  + '</span><br />' + '<hr>';
@@ -302,8 +300,9 @@ console.log();
 
     }
    
-  $('#start-game').click(function(){
+  $('#new-drink').click(function(){
   	startGame();
+    userPreferences = [''];
  });
 
   function startGame() {
