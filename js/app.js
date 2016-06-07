@@ -313,6 +313,4 @@ var Drinks = function(stuff) {
   }
 
 
-
-
 });
