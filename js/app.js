@@ -52,9 +52,9 @@
   };
 
   var Strong = new Pantry(['glugs of rum', 'slugs of whisky', 'splashes of gin', 'bangs of bourbon', 'smacks of scotch', 'vials of vodka']);
-  var Salty = new Pantry(['olives on a stick', 'salt-dusted rims', 'rashers of bacon', 'garlic sprinkled tofus', 'roasted cashews']);
+  var Salty = new Pantry(['olive on a stick', 'salt-dusted rim', 'rasher of bacon', 'garlic sprinkled tofu', 'roasted cashew']);
   var Bitter = new Pantry(['shakes of bitters', 'splashes of tonic', 'twists of lemon peel', 'grated orange peels']);
-  var Sweet = new Pantry(['sugar cube', 'spoonful of honey', 'splash of cola', 'bucket of chocolate', 'crushed jelly donut']);
+  var Sweet = new Pantry(['sugar cubes', 'spoonfuls of honey', 'splashes of cola', 'thimbles of chocolate', 'crushed jelly donuts']);
   var Fruity = new Pantry(['slice of orange', 'dash of cassis', 'cherry on top', 'watermelon candy', 'chinese egg toffee']);
 
   var randStrong = Strong.ingredients[Math.floor(Math.random() * Strong.ingredients.length)];
@@ -263,12 +263,12 @@ if (questionSet[0].choices[selections[2]] === ' yes') {
 
 if (questionSet[0].choices[selections[3]] === ' yes') {
       
-      userPreferences.push('<span style="color: green;">' +' 1 ' + randSweet + '</span>');
+      userPreferences.push('<span style="color: green;">' +' 2 ' + randSweet + '</span>');
     }
 
 if (questionSet[0].choices[selections[4]] === ' yes') {
       
-      userPreferences.push('<span style="color: orange;">' +' 1 ' + randFruity  + '</span>');
+      userPreferences.push('<span style="color: red;">' +' 1 ' + randFruity  + '</span>');
     
   }
 // if (userPreferences = ['']) {
@@ -287,7 +287,7 @@ var Drinks = function(stuff) {
 
 
 
-    	result += (i + 1 ) + '. ' + questionSet[i].question + '<br />' + '<em>Your Answer: </em>' + '<span style="color:' + trueTxtcolr + ';">' + questionSet[i].choices[selections[i]]  + '</span><br />' + '<hr>';
+    	// result += (i + 1 ) + '. ' + questionSet[i].question + '<br />' + '<em>Your Answer: </em>' + '<span style="color:' + trueTxtcolr + ';">' + questionSet[i].choices[selections[i]]  + '</span><br />' + '<hr>';
       // console.log(questionSet[i].choices[selections[i]]);
 
     }
@@ -295,14 +295,13 @@ var Drinks = function(stuff) {
   	$('ul.answer-text').html(result);
     	// $('ul.answer-text').html('0' + i + '.' + question01 + '<br />' + 'Your Answer: ' + selections[i] + ' Correct Answer: ' + questionSet[i].correctAnswer + '<br />')
 
-   score.append('<h2>Looks like the ' + '<span style="color: #f0ad4e;">The ' + randDrink1 + ' ' + randDrink2 + '</span> has your name on it. Here\'s the recipe:</h2><span style="color: #483993; font-size: 24px;"> 3 shots of Jamaican rum, ' + userPreferences + '</span>');
+   score.append('<h2>Looks like the ' + '<span style="color: #f0ad4e;">The ' + randDrink1 + ' ' + randDrink2 + '</span> has your name on it. Here\'s the recipe:</h2><hr><span style="color: #483993; font-size: 30px;"> 3 shots of Jamaican rum, ' + userPreferences + '</span>');
     return score;
 
     }
    
   $('#new-drink').click(function(){
   	startGame();
-    userPreferences = [''];
  });
 
   function startGame() {
@@ -316,7 +315,7 @@ var Drinks = function(stuff) {
 			$('.answer-text').hide();
 			questionCounter = 0;
 			selections = [];
-			// questionSet = questions[0];
+      userPreferences = [''];
 			displayNext();
 			calculateScore();
 			$('ul#question-dots li i').css('color', '#778DA3');
@@ -326,91 +325,8 @@ var Drinks = function(stuff) {
 
   }
 
-  /*--- Display information modal box ---*/
- 		$("#howToplay").click(function(){
-		$("#quiz").css("opacity", "0.2");
-		// $("ul.footer-box").hide();
-   		$(".overlay").show();
-
-  	});
-
- 		/*--- Hide information modal box ---*/
-  	$(".close").click(function(){
-  		$(".overlay").fadeOut(600);
-			$(".control-panel").show();
-			$("ul.footer-box").show();
-			$("#quiz").css("background-color", "");
-			$("#quiz").css("opacity", "1.0");
-
-
-	});
-
-// CONSTRUCTORS
-
-
-
-// var userAnswers = []; 
-// var userPreferences = new Preferences(userAnswers);
-// userPreferences.extrastuff = userAnswers[userAnswers.length-1];
 
 
 
 });
 
-// METHODS
-
-// var Musician = function(sounds) {
-//     this.sounds = sounds;
-// };
-
-// Musician.prototype.solo = function(length) {
-//     var solo = "";
-//     for (var i=0; i<length; i++) {
-//         solo += this.sounds[i % this.sounds.length] + " ";
-//     }
-//     console.log(solo);
-// };
-
-// var david = new Musician(['Twang', 'Thrumb', 'Bling']);
-// david.solo(5);
-
-
-// // INHERITANCE
-
-// var Musician = function(sounds) {
-//     this.sounds = sounds;
-// };
-
-// Musician.prototype.solo = function(length) {
-//     var solo = "";
-//     for (var i=0; i<length; i++) {
-//         solo += this.sounds[i % this.sounds.length] + " ";
-//     }
-//     console.log(solo);
-// };
-
-// var Guitarist = function() {
-//     Musician.call(this, ['Twang', 'Thrumb', 'Bling']);
-//     this.strings = 6;
-// };
-// Guitarist.prototype = Object.create(Musician.prototype);
-// Guitarist.prototype.constructor = Guitarist;
-
-// Guitarist.prototype.tune = function() {
-//     console.log('Be with you in a moment');
-//     console.log('Twoning sproing splang');
-// };
-
-// var Bassist = function() {
-//     Musician.call(this, ['Boink', 'Bow', 'Boom']);
-//     this.strings = 4;
-// };
-// Bassist.prototype = Object.create(Musician.prototype);
-// Bassist.prototype.constructor = Bassist;
-
-// var nigel = new Guitarist();
-// nigel.tune();
-// nigel.solo(8);
-
-// var derek = new Bassist();
-// derek.solo(4);
