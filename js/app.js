@@ -1,8 +1,6 @@
   $(document).ready(function(){
 
-  // ADD QUESTION SETS HERE
-
-  // FAMOUS INVENTORS 
+  // ADD DRINK QUESTIONS HERE
 
   var questions = [[
   { question: "Do ye like yer drinks strong?",
@@ -315,18 +313,11 @@ var Drinks = function(stuff) {
 			$('.answer-text').hide();
 			questionCounter = 0;
 			selections = [];
-      userPreferences = [''];
+      			userPreferences = [''];
 			displayNext();
 			calculateScore();
 			$('ul#question-dots li i').css('color', '#778DA3');
 
-
-
-
   }
 
-
-
-
 });
-
