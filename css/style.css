@@ -260,7 +260,7 @@ section.control-panel {
   z-index: 000;
 }
 
-.trivia-questions {
+.drink-orders {
   width: auto;;
   padding: 9px;
   box-sizing: border-box;
@@ -268,7 +268,7 @@ section.control-panel {
   z-index: 0;
 }
 
-.trivia-questions h2 {
+.drink-orders h2 {
  font-size: 36px;
  font-weight: 500;
  font-family: 'Museo Slab', serif;
