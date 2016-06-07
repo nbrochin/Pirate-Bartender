@@ -51,8 +51,8 @@
   var Strong = new Pantry(['glugs of rum', 'slugs of whisky', 'splashes of gin', 'bangs of bourbon', 'smacks of scotch', 'vials of vodka']);
   var Salty = new Pantry(['olive on a stick', 'salt-dusted rim', 'rasher of bacon', 'garlic sprinkled tofu', 'roasted cashew']);
   var Bitter = new Pantry(['shakes of bitters', 'splashes of tonic', 'twists of lemon peel', 'grated orange peels']);
-  var Sweet = new Pantry(['sugar cube', 'spoonful of honey', 'splash of cola', 'bucket of chocolate', 'crushed jelly donut']);
-  var Fruity = new Pantry(['slices of orange', 'dashes of cassis', 'cherries on top', 'watermelon candy', 'chinese egg toffees']);
+  var Sweet = new Pantry(['sugar cubes', 'spoonfuls of honey', 'splashes of cola', 'thimbles of chocolate', 'crushed jelly donuts', 'sprinkle of double bubble dust']);
+  var Fruity = new Pantry(['slice of orange', 'dash of cassis', 'cherry on top', 'watermelon candy', 'chinese egg toffee']);
 
   var randStrong = Strong.ingredients[Math.floor(Math.random() * Strong.ingredients.length)];
   var randSalty = Salty.ingredients[Math.floor(Math.random() * Salty.ingredients.length)];
