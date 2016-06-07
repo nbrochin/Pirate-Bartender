@@ -51,13 +51,8 @@
   var Strong = new Pantry(['glugs of rum', 'slugs of whisky', 'splashes of gin', 'bangs of bourbon', 'smacks of scotch', 'vials of vodka']);
   var Salty = new Pantry(['olive on a stick', 'salt-dusted rim', 'rasher of bacon', 'garlic sprinkled tofu', 'roasted cashew']);
   var Bitter = new Pantry(['shakes of bitters', 'splashes of tonic', 'twists of lemon peel', 'grated orange peels']);
-<<<<<<< HEAD
   var Sweet = new Pantry(['sugar cube', 'spoonful of honey', 'splash of cola', 'bucket of chocolate', 'crushed jelly donut']);
   var Fruity = new Pantry(['slices of orange', 'dashes of cassis', 'cherries on top', 'watermelon candy', 'chinese egg toffees']);
-=======
-  var Sweet = new Pantry(['sugar cubes', 'spoonfuls of honey', 'splashes of cola', 'thimbles of chocolate', 'crushed jelly donuts']);
-  var Fruity = new Pantry(['slice of orange', 'dash of cassis', 'cherry on top', 'watermelon candy', 'chinese egg toffee']);
->>>>>>> master
 
   var randStrong = Strong.ingredients[Math.floor(Math.random() * Strong.ingredients.length)];
   var randSalty = Salty.ingredients[Math.floor(Math.random() * Salty.ingredients.length)];
@@ -267,11 +262,9 @@ if (questionSet[0].choices[selections[3]] === ' yes') {
 
 if (questionSet[0].choices[selections[4]] === ' yes') {
       
-<<<<<<< HEAD
-      userPreferences.push('<span style="color: red;">' +' 2 ' + randFruity  + '</span>');
-=======
+
       userPreferences.push('<span style="color: red;">' +' 1 ' + randFruity  + '</span>');
->>>>>>> master
+
     
   }
 
@@ -286,11 +279,6 @@ var Drinks = function(stuff) {
   var randDrink2 = partTwo.stuff[Math.floor(Math.random() * partTwo.stuff.length)];
 
 
-
-<<<<<<< HEAD
-
-=======
->>>>>>> master
     	// result += (i + 1 ) + '. ' + questionSet[i].question + '<br />' + '<em>Your Answer: </em>' + '<span style="color:' + trueTxtcolr + ';">' + questionSet[i].choices[selections[i]]  + '</span><br />' + '<hr>';
       // console.log(questionSet[i].choices[selections[i]]);
 
@@ -299,12 +287,9 @@ var Drinks = function(stuff) {
   	$('ul.answer-text').html(result);
     	// $('ul.answer-text').html('0' + i + '.' + question01 + '<br />' + 'Your Answer: ' + selections[i] + ' Correct Answer: ' + questionSet[i].correctAnswer + '<br />')
 
-<<<<<<< HEAD
+
    score.append('<h2>Looks like the ' + '<span style="color: #ff6633;">The ' + randDrink1 + ' ' + randDrink2 + '</span> has your name on it. Here\'s the recipe:<hr></h2><span style="color: blue; font-size: 30px;"> 3 shots of Jamaican rum, ' + userPreferences + '</span>');
-=======
-   score.append('<h2>Looks like the ' + '<span style="color: #f0ad4e;">The ' + randDrink1 + ' ' + randDrink2 + '</span> has your name on it. Here\'s the recipe:</h2><hr><span style="color: #483993; font-size: 30px;"> 3 shots of Jamaican rum, ' + userPreferences + '</span>');
->>>>>>> master
-    return score;
+  return score;
 
     }
    
@@ -320,10 +305,7 @@ var Drinks = function(stuff) {
 			$('.answer-text').hide();
 			questionCounter = 0;
 			selections = [];
-<<<<<<< HEAD
-=======
       userPreferences = [''];
->>>>>>> master
 			displayNext();
 			calculateScore();
 			$('ul#question-dots li i').css('color', '#778DA3');
@@ -334,7 +316,3 @@ var Drinks = function(stuff) {
 
 
 });
-<<<<<<< HEAD
-=======
-
->>>>>>> master
