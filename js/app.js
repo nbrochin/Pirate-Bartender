@@ -1,6 +1,5 @@
   $(document).ready(function(){
 
-
   var questions = [[
   { question: "Do ye like yer drinks strong?",
     choices: [' yes', ' no'],
@@ -42,7 +41,7 @@
   var selections = []; // CREATES ARRAY WITH USER CHOICES
   var userPreferences = []; // CREATES ARRAY WITH USER DRINK PREFERENCES
   var choices = questions[0,0].correctAnswer;
-  var quiz = $('.drink-orders'); 
+  var quiz = $('section.drinkPrefsDisplay'); 
   
   var Pantry = function(ingredients) {
     this.ingredients = ingredients;
@@ -54,11 +53,11 @@
   var Sweet = new Pantry(['sugar cubes', 'spoonfuls of honey', 'splashes of cola', 'thimbles of chocolate', 'crushed jelly donuts', 'sprinkle of double bubble dust']);
   var Fruity = new Pantry(['slice of orange', 'dash of cassis', 'cherry on top', 'watermelon candy', 'chinese egg toffee']);
 
-  var randStrong = Strong.ingredients[Math.floor(Math.random() * Strong.ingredients.length)];
-  var randSalty = Salty.ingredients[Math.floor(Math.random() * Salty.ingredients.length)];
-  var randBitter = Bitter.ingredients[Math.floor(Math.random() * Bitter.ingredients.length)];
-  var randSweet = Sweet.ingredients[Math.floor(Math.random() * Sweet.ingredients.length)];
-  var randFruity = Fruity.ingredients[Math.floor(Math.random() * Fruity.ingredients.length)];
+  var randStrong = Strong.ingredients[Math.floor(Math.random() * Strong.ingredients.length)],
+      randSalty = Salty.ingredients[Math.floor(Math.random() * Salty.ingredients.length)],
+      randBitter = Bitter.ingredients[Math.floor(Math.random() * Bitter.ingredients.length)],
+      randSweet = Sweet.ingredients[Math.floor(Math.random() * Sweet.ingredients.length)],
+      randFruity = Fruity.ingredients[Math.floor(Math.random() * Fruity.ingredients.length)];
  
 console.log(Sweet.ingredients);
 
@@ -84,12 +83,12 @@ console.log(Sweet.ingredients);
     if(quiz.is(':animated')) {        
       return false;
     }
-    choose();
+    drinkPreferences();
     
     // ERROR IF NEXT BUTTON IS PUSHED WITHOUT AN ANSWER CHOICE
     
     if (isNaN(selections[questionCounter])) {
-      alert('Please choose an answer!');
+      alert('Aye, my hearin\' must be bad. Is it yes or no, sailor?');
     } else {
       questionCounter++;
       displayNext(questionCounter);
@@ -130,7 +129,6 @@ console.log(Sweet.ingredients);
     // questionSet = questions[0];
     choices = questions[0,0].correctAnswer;
     
-
     var questionNo = $('<h2>DRINK TYPE ' + 0 + (index + 1) + ':</h2>');
   	$('#question-number.question-01').html(questionNo);
     
@@ -147,17 +145,10 @@ console.log(Sweet.ingredients);
   
 
   // places user choice into an array
-  function choose() {
+  function drinkPreferences() {
     selections[questionCounter] = + $('input[name="answer"]:checked').val();
     
   }
-
-         function drinkPreferences() {
-              selections[questionCounter] = + $('input[name="answer"]:checked').val();
-              var userAnswers = []; 
-              var drinkPreferences = new Preferences(userAnswers);
-          
-         }
 
   		
   // Displays next question
@@ -176,7 +167,7 @@ console.log(Sweet.ingredients);
  }
 
     quiz.fadeOut(function() {
-      $('.drink-orders').hide();
+      $('.drink-orders').remove();
 
 
       if(questionCounter < questionSet.length){
@@ -184,23 +175,22 @@ console.log(Sweet.ingredients);
         quiz.append(nextQuestion).fadeIn();
         if (!(isNaN(selections[questionCounter]))) {
           $('input[value='+selections[questionCounter]+']').prop('checked', true);
-          $('ul.answer-text').hide();
+          $('.answer-text').empty();
         }
         
       }else {
-        var scoreDiv = displayScore();
+        var scoreDiv = displayRecipe ();
         quiz.append(scoreDiv).fadeIn();
-        $('ul.answer-text').show();
+        $('.answer-text').show();
 
-        // $('#next').hide();
-        // $('#start').show();
+
       }
     });
   }
   
     // Creates a list of the answer choices as radio inputs
   function createRadios(index) {
-    var radioList = $('<ul class="answer-text">');
+    var radioList = $('<div class="answer-text">');
     var item;
     var input = '';
     for (var i = 0; i < questionSet[index].choices.length; i++) {
@@ -218,11 +208,9 @@ console.log(Sweet.ingredients);
   }
 
   // Calculates number of correct answers and creates a message to be displayed
-  function displayScore(index) {
+  function displayRecipe(index) {
   	// console.log(questionSet);
-    var score = $('<div>',{class: 'drink-orders'});
-    var calculatedScore = calculateScore();
-    currentScore = calculateScore();
+    var output = $('<div>',{class: 'drink-orders'});
 
    
     var trueTxtcolr = "";
@@ -240,67 +228,59 @@ console.log(Sweet.ingredients);
     	trueTxtcolr = '#66000A';
 }
 
+
+
+    userPreferences = [];
+
 if (questionSet[0].choices[selections[0]] === ' yes') {
-      userPreferences = [];
+      
       userPreferences.push('<span style="color: purple;">' +' 2 ' + randStrong + '</span>');
     }
-
-if (questionSet[0].choices[selections[1]] === ' yes') {
-      
+if (questionSet[0].choices[selections[1]] === ' yes') {   
       userPreferences.push('<span style="color: red;">' +' 1 ' + randSalty + '</span>');
     } 
-
 if (questionSet[0].choices[selections[2]] === ' yes') {
-      
       userPreferences.push('<span style="color: blue;">' +' 3 ' + randBitter + '</span>');
     }
-
 if (questionSet[0].choices[selections[3]] === ' yes') {
-      
       userPreferences.push('<span style="color: green;">' +' 2 ' + randSweet + '</span>');
     }
-
 if (questionSet[0].choices[selections[4]] === ' yes') {
-      
-
       userPreferences.push('<span style="color: red;">' +' 1 ' + randFruity  + '</span>');
-
-    
   }
+if  (userPreferences.length > 0) {
+console.log(userPreferences.length);
+          
+            
+          var Drinks = function(stuff) {
+            this.stuff = stuff;
+          };
+          
+          var partOne = new Drinks(['Barren', 'Screaming', 'Nuclear', 'Foggy', 'Pungent', 'Lemony', 'Sleepy', 'Jumpy']);
+          var partTwo = new Drinks(['Spinnaker', 'Mariner', 'Scuppers', 'Long-Boat', 'Dungeon', 'Gallows', 'Plank', 'Wench']);
 
-var Drinks = function(stuff) {
-    this.stuff = stuff;
-  };
+          var randDrink1 = partOne.stuff[Math.floor(Math.random() * partOne.stuff.length)];
+          var randDrink2 = partTwo.stuff[Math.floor(Math.random() * partTwo.stuff.length)];
 
-  var partOne = new Drinks(['Barren', 'Screaming', 'Nuclear', 'Foggy', 'Pungent', 'Lemony', 'Sleepy', 'Jumpy']);
-  var partTwo = new Drinks(['Spinnaker', 'Mariner', 'Scuppers', 'Long-Boat', 'Dungeon', 'Gallows', 'Plank', 'Wench']);
-
-  var randDrink1 = partOne.stuff[Math.floor(Math.random() * partOne.stuff.length)];
-  var randDrink2 = partTwo.stuff[Math.floor(Math.random() * partTwo.stuff.length)];
-
-
-    	// result += (i + 1 ) + '. ' + questionSet[i].question + '<br />' + '<em>Your Answer: </em>' + '<span style="color:' + trueTxtcolr + ';">' + questionSet[i].choices[selections[i]]  + '</span><br />' + '<hr>';
-      // console.log(questionSet[i].choices[selections[i]]);
-
-    }
-
-  	$('ul.answer-text').html(result);
-    	// $('ul.answer-text').html('0' + i + '.' + question01 + '<br />' + 'Your Answer: ' + selections[i] + ' Correct Answer: ' + questionSet[i].correctAnswer + '<br />')
-
-
-   score.append('<h2>Looks like the ' + '<span style="color: #ff6633;">The ' + randDrink1 + ' ' + randDrink2 + '</span> has your name on it. Here\'s the recipe:<hr></h2><span style="color: blue; font-size: 30px;"> 3 shots of Jamaican rum, ' + userPreferences + '</span>');
-  return score;
+          $('.answer-text').html(result);
+          // $('.drink-orders').show();
+           $('.answer-text').html('<h3>Looks like <span style="color: #ff6633;">The ' + randDrink1 + ' ' + randDrink2 + '</span> has your name on it. Here\'s the recipe:</h3><hr><span style="color: blue; font-size: 30px;"> 3 shots of Jamaican rum, ' + userPreferences + '<hr></span><h4>Shall I set one up for ya, then?</h4>');
+           return output;
 
     }
    
+  else {
+    // $('.drink-orders').show();
+  $('.answer-text').html('<h3>"I\'ll just keep dancin\' till ya make up yer mind."<img src="images/pirate_dance.gif" alt="pirate dancing"></h3>' );
+  
+}
+
   $('#new-drink').click(function(){
   	startGame();
  });
 
   function startGame() {
-  	event.preventDefault();
-			$('.q-score-css').text(" 0pts");
-			
+  	  event.preventDefault();			
 			createRadios(0);
 			$('.answer-text').hide();
 			questionCounter = 0;
@@ -310,7 +290,7 @@ var Drinks = function(stuff) {
 			calculateScore();
 			$('ul#question-dots li i').css('color', '#778DA3');
 
-  }
-
-
-});
+  };
+};
+}
+})
